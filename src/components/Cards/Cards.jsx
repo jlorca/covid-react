@@ -1,6 +1,6 @@
 import React from "react";
-import { Card, CardContent, Typography, Grid } from "@material-ui/core";
-import CountUp from "react-countup";
+import { Card, Grid } from "@material-ui/core";
+import { CovidCard } from "../../components";
 
 import styles from "./Cards.module.css";
 import cx from "classnames";
@@ -21,25 +21,13 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
           md={3}
           className={cx(styles.card, styles.confirmed)}
         >
-          <CardContent>
-            <Typography color="textSecondary" gutterBottom>
-              {labels.infected}
-            </Typography>
-            <Typography variant="h5">
-              <CountUp
-                start={0}
-                end={confirmed.value}
-                duration={2.5}
-                separator=","
-              />
-            </Typography>
-            <Typography color="textSecondary">
-              {new Date(lastUpdate).toDateString()}
-            </Typography>
-            <Typography variant="body2">
-              {labels.numberActiveCasesCovid}
-            </Typography>
-          </CardContent>
+          <CovidCard
+            textTitle={labels.infected}
+            numberCases={confirmed}
+            lastUpdateDate={lastUpdate}
+            textFooter={labels.numberActiveCasesCovid}
+            duration={2.5}
+          />
         </Grid>
         <Grid
           item
@@ -48,25 +36,13 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
           md={3}
           className={cx(styles.card, styles.recovered)}
         >
-          <CardContent>
-            <Typography color="textSecondary" gutterBottom>
-              {labels.recovered}
-            </Typography>
-            <Typography variant="h5">
-              <CountUp
-                start={0}
-                end={recovered.value}
-                duration={2.5}
-                separator=","
-              />
-            </Typography>
-            <Typography color="textSecondary">
-              {new Date(lastUpdate).toDateString()}
-            </Typography>
-            <Typography variant="body2">
-              {labels.numberRecoveriesCovid}
-            </Typography>
-          </CardContent>
+          <CovidCard
+            textTitle={labels.recovered}
+            numberCases={recovered}
+            lastUpdateDate={lastUpdate}
+            textFooter={labels.numberRecoveriesCovid}
+            duration={2.5}
+          />
         </Grid>
         <Grid
           item
@@ -75,23 +51,13 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
           md={3}
           className={cx(styles.card, styles.deaths)}
         >
-          <CardContent>
-            <Typography color="textSecondary" gutterBottom>
-              {labels.deaths}
-            </Typography>
-            <Typography variant="h5">
-              <CountUp
-                start={0}
-                end={deaths.value}
-                duration={2.5}
-                separator=","
-              />
-            </Typography>
-            <Typography color="textSecondary">
-              {new Date(lastUpdate).toDateString()}
-            </Typography>
-            <Typography variant="body2">{labels.numberDeathsCovid}</Typography>
-          </CardContent>
+          <CovidCard
+            textTitle={labels.deaths}
+            numberCases={deaths}
+            lastUpdateDate={lastUpdate}
+            textFooter={labels.numberDeathsCovid}
+            duration={2.5}
+          />
         </Grid>
       </Grid>
     </div>
