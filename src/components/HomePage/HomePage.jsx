@@ -1,10 +1,12 @@
 import React from "react";
+import coronaImage from "../../images/page_banner.png";
+
 import styles from "./HomePage.module.css";
 
 const HomePage = () => {
   return (
     <div className={styles.container}>
-      <h1>home page. Work in progress!</h1>
+      <img className={styles.image} src={coronaImage} alt="COVID-19" />
     </div>
   );
 };
